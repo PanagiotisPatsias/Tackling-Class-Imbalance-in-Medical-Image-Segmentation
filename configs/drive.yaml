@@ -1,0 +1,37 @@
+dataset: drive
+seed: 42
+num_workers: 4
+image_size: [512, 512]
+batch_size: 2
+
+model:
+  in_channels: 3
+  base_channels: 64
+  # out_classes is set by the loss router
+
+max_epochs: 400
+optimizer:
+  name: sgd
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 1e-4
+
+lr_scheduler:
+  factor: 0.1
+  patience: 10
+
+loss:
+  name: symmetric_unified_focal_loss        # or tversky, focal_tversky, ce, unified_focal, etc.
+  params: {}
+
+threshold: 0.5
+early_stopping:
+  patience: 20
+
+monitor:
+  metric: val_loss   # val_loss or dice
+  mode: min      # for dice -> max, for val_loss -> min
+
+data_dir: data/DRIVE/DRIVE      # or your absolute path
+out_dir: runs/drive
+val_split: 0.2            # use fractional split; avoids “test_size > n” issues

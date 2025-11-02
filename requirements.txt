@@ -1,0 +1,23 @@
+# Core
+torch
+torchvision
+numpy
+opencv-python
+Pillow
+albumentations
+scikit-image
+scikit-learn
+matplotlib
+
+
+# IO / formats
+tifffile
+imageio
+imagecodecs
+
+
+# CLI / config
+pyyaml
+rich
+tqdm
+scipy

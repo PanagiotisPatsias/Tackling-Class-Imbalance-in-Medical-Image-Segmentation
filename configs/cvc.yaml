@@ -1,0 +1,42 @@
+dataset: cvc
+seed: 42
+num_workers: 4
+image_size: [288, 384]   # H, W
+
+batch_size: 2
+
+model:
+  in_channels: 3
+  base_channels: 64
+
+max_epochs: 400
+
+optimizer:
+  name: sgd
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 1e-4
+
+lr_scheduler:
+  factor: 0.1
+  patience: 10
+
+loss:
+  name: boundary_gaussian
+  params: {sigma: 4}            # e.g., {alpha: 0.7, beta: 0.3, gamma: 0.75}
+
+threshold: 0.5
+
+splits:
+  train: 392
+  val: 98                 # the rest will be test
+
+data_dir: data/CVC
+out_dir: runs/cvc
+
+early_stopping:
+  patience: 20
+
+monitor:
+  metric: dice   # val_loss or dice
+  mode: max      # for dice -> max, for val_loss -> min

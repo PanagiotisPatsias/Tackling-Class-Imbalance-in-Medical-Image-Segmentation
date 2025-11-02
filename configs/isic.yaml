@@ -1,0 +1,37 @@
+dataset: isic
+seed: 42
+num_workers: 4
+image_size: [384, 384]
+batch_size: 4
+
+model:
+  in_channels: 3
+  base_channels: 64
+  # out_classes is driven by the loss via loss_router
+
+max_epochs: 400
+optimizer:
+  name: sgd
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 1e-4
+
+lr_scheduler:
+  factor: 0.1
+  patience: 10
+
+loss:
+  name: tversky
+  params: 
+
+threshold: 0.5
+
+early_stopping:
+  patience: 20
+
+monitor:
+  metric: val_loss   # val_loss or dice
+  mode: min      # for dice -> max, for val_loss -> min
+
+data_dir: /local/scratch/datasets/Medical/Skin_segmentation
+out_dir: runs/isic
