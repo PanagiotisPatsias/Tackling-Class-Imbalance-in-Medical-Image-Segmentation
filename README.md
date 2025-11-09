@@ -54,6 +54,18 @@ nohup python -u -m src.engine.train --config configs/isic.yaml &
 nohup python -u -m src.engine.evaluate --config configs/isic.yaml &
 ```
 
+---
+
+## Practical Notes
+- **Output directory:**
+All training and evaluation results are automatically saved inside the run/ folder.
+
+- **Configuration files:**
+All experiment parameters (dataset paths, model hyperparameters, loss settings, etc.) are defined in the corresponding YAML files under the configs/ directory.
+Modify these files to adjust dataset, model, loss type, or output paths before running training or evaluation.
+
+- **(Optional) Virtual environment:**
+It is recommended to use a Python virtual environment (venv) to keep dependencies isolated and avoid version conflicts
 
 ### References
 <a id="1"></a> [1] Bernal, J. *et al.* (2015). **WMDOVA: CVC-ClinicDB dataset for polyp segmentation.**  
